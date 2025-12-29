@@ -50,8 +50,11 @@
                 <div class="card p-8">
                     <h2 class="text-3xl font-black mb-4">⚡ Apa itu Momentum?</h2>
                     <p class="text-lg mb-4">
-                        <strong>Momentum</strong> adalah ukuran keadaan gerak suatu benda. Momentum dihitung sebagai hasil kali massa benda dengan kecepatannya.
+                        <strong>Momentum</strong> adalah besaran fisika yang menunjukkan seberapa sulit suatu benda yang bergerak untuk dihentikan. Momentum dihitung sebagai hasil kali massa benda dengan kecepatannya.
                     </p>
+                    <div class="mb-4">
+                        <button id="openVideoBtn" class="button warning">▶ Tonton penjelasan singkat</button>
+                    </div>
                     <div class="bg-blue-50 p-4 rounded-lg border-2 border-blue-300 mb-4">
                         <p class="font-mono text-lg text-center">
                             <strong>p = m × v</strong>
@@ -185,10 +188,38 @@
             </div>
 
             <!-- Footer -->
+            <!-- Embedded Video Modal -->
+            <div id="videoModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
+                <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
+                    <div class="p-4 flex justify-between items-center border-b">
+                        <h3 class="font-bold">Video: Momentum & Impuls</h3>
+                        <button id="closeVideoBtn" class="button">Tutup</button>
+                    </div>
+                    <div class="aspect-video">
+                        <iframe id="videoIframe" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-center mt-12 text-white">
                 <p class="text-lg font-bold">Physics Adventure © 2025</p>
                 <p class="text-sm opacity-80">Educational Game for Physics Learning</p>
             </div>
+
+            <script>
+                (function(){
+                    const openBtn = document.getElementById('openVideoBtn');
+                    const modal = document.getElementById('videoModal');
+                    const closeBtn = document.getElementById('closeVideoBtn');
+                    const iframe = document.getElementById('videoIframe');
+                    const embedSrc = 'https://www.youtube.com/embed/1gPUOw2J-Kg?si=BBDg4KwMbTWpGmzF&autoplay=1';
+                    function open(){ iframe.src = embedSrc; modal.classList.remove('hidden'); }
+                    function close(){ modal.classList.add('hidden'); iframe.src = ''; }
+                    openBtn && openBtn.addEventListener('click', open);
+                    closeBtn && closeBtn.addEventListener('click', close);
+                    modal.addEventListener('click', (e)=>{ if(e.target===modal) close(); });
+                })();
+            </script>
         </div>
     </div>
 </body>
