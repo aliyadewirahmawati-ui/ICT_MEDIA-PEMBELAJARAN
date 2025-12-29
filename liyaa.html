@@ -967,6 +967,13 @@
             canvas.height = window.innerHeight;
         }
 
+        let fontsReady = false;
+        // Tunggu Google Fonts siap sebelum render canvas
+        document.fonts.ready.then(() => {
+            fontsReady = true;
+            console.log('✅ Poppins font sudah siap!');
+        });
+
         function gameLoop() {
             if (state.gameActive && !state.quizActive) updatePhysics();
             render();
@@ -1253,7 +1260,7 @@
                         ctx.fillStyle = i % 2 === 0 ? 'black' : 'white';
                         ctx.fillRect(t.x + boxSize, drawY, boxSize, boxSize);
                     }
-                    ctx.save(); ctx.fillStyle = '#22c55e'; ctx.font = 'bold 30px Arial'; 
+                    ctx.save(); ctx.fillStyle = '#22c55e'; ctx.font = 'bold 700 30px Poppins'; 
                     ctx.translate(t.x - 40, tY); // Center text vertically on road
                     ctx.rotate(-Math.PI/2); ctx.textAlign = 'center'; ctx.fillText("🏁 FINISH 🏁", 0, 0); ctx.restore();
                 }
@@ -1268,7 +1275,7 @@
 
                     // CONFIG TEKS UMUM (Horizontal & Jelas)
                     ctx.fillStyle = 'white'; 
-                    ctx.font = 'bold 16px Fredoka'; 
+                    ctx.font = '600 16px Poppins'; 
                     ctx.textAlign = 'center';
                     ctx.shadowColor = "black";
                     ctx.shadowBlur = 4;
@@ -1284,6 +1291,7 @@
                         
                         // TEKS DI TENGAH
                         ctx.fillStyle = 'white'; ctx.shadowBlur=4;
+                        if (fontsReady) ctx.font = '600 16px Poppins';
                         ctx.fillText("POHON TUMBANG", 0, 5);
 
                     } else if (g.visual === 'accident') {
@@ -1306,7 +1314,7 @@
                         ctx.restore(); 
 
                         // TEKS DI TENGAH (Font Besar)
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 24px Fredoka'; ctx.shadowBlur=4;
+                        ctx.fillStyle = 'white'; ctx.font = '600 24px Poppins'; ctx.shadowBlur=4;
                         ctx.fillText("TABRAKAN", 0, 10);
 
                     } else if (g.visual === 'river') {
@@ -1334,7 +1342,7 @@
                         // Top beam
                         ctx.fillStyle = '#fde047'; ctx.fillRect(-archW/2 + 20, -ROAD_HALF - archH - 20, archW - 40, 20);
                         // Banner text
-                        ctx.fillStyle = '#111827'; ctx.font = 'bold 22px Fredoka'; ctx.textAlign = 'center'; ctx.fillText('FINISH', 0, -ROAD_HALF - archH - 6);
+                        ctx.fillStyle = '#111827'; ctx.font = '600 22px Poppins'; ctx.textAlign = 'center'; ctx.fillText('FINISH', 0, -ROAD_HALF - archH - 6);
                         // Decorative flags
                         ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.moveTo(-archW/2 + 10, -ROAD_HALF - archH); ctx.lineTo(-archW/2 + 40, -ROAD_HALF - archH + 8); ctx.lineTo(-archW/2 + 10, -ROAD_HALF - archH + 16); ctx.fill();
                         ctx.beginPath(); ctx.moveTo(archW/2 - 10, -ROAD_HALF - archH); ctx.lineTo(archW/2 - 40, -ROAD_HALF - archH + 8); ctx.lineTo(archW/2 - 10, -ROAD_HALF - archH + 16); ctx.fill();
@@ -1523,7 +1531,7 @@
                         ctx.strokeRect(-10, -ROAD_HALF, 20, ROAD_HEIGHT);
                         
                         // TEKS DI TENGAH
-                        ctx.fillStyle = 'white'; ctx.font = 'bold 20px Arial'; ctx.shadowBlur=4;
+                        ctx.fillStyle = 'white'; ctx.font = '600 20px Poppins'; ctx.shadowBlur=4;
                         ctx.fillText(`RINTANGAN ${g.id}`, 0, 5);
                     }
                     
@@ -1539,7 +1547,7 @@
             ctx.beginPath(); ctx.ellipse(p.x, p.y + 15, 20, 8, 0, 0, Math.PI*2); ctx.fill();
             // Draw player (p.y is now Absolute, pass jumpOffset)
             drawToonCharacter(ctx, p.x, p.y + (p.jumpOffset || 0), state.playerType, (p.vx !== 0 || p.vy !== 0 || state.crossingAction));
-            ctx.fillStyle = 'black'; ctx.font = 'bold 14px Fredoka'; ctx.textAlign = 'center'; 
+            ctx.fillStyle = 'black'; ctx.font = '600 14px Poppins'; ctx.textAlign = 'center'; 
             ctx.fillText(state.playerName, p.x, p.y - 45 + (p.jumpOffset || 0));
 
             ctx.restore();
@@ -1594,7 +1602,7 @@
                 ctx.fillStyle = 'rgba(150, 200, 255, 0.7)'; ctx.fillRect(-15, -30, 30, 10); ctx.strokeRect(-15, -30, 30, 10);
                 ctx.fillStyle = '#1f2937'; ctx.beginPath(); ctx.arc(-15, 0, 5, 0, Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.arc(15, 0, 5, 0, Math.PI*2); ctx.fill();
                 if (obj.carType === 'taxi') {
-                    ctx.fillStyle = 'black'; ctx.font = 'bold 8px Arial'; ctx.textAlign = 'center'; ctx.fillText("TAKSI", 0, -32);
+                    ctx.fillStyle = 'black'; ctx.font = '600 8px Poppins'; ctx.textAlign = 'center'; ctx.fillText("TAKSI", 0, -32);
                     ctx.fillStyle = '#fde047'; ctx.fillRect(-8, -36, 16, 4); ctx.strokeRect(-8, -36, 16, 4);
                 }
                 ctx.restore();
