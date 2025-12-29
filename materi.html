@@ -105,6 +105,9 @@
                     <p class="text-gray-700">
                         Ini berarti ketika suatu gaya bekerja pada benda, momentum benda akan berubah sebesar impuls yang diberikan.
                     </p>
+                    <div class="mt-4">
+                        <button id="openVideoBtn4" class="button warning">▶ Tonton penjelasan singkat (Hubungan)</button>
+                    </div>
                 </div>
 
                 <!-- Hukum Kekekalan Momentum -->
@@ -195,6 +198,19 @@
             </div>
 
             <!-- Footer -->
+            <!-- In-page video modal for Hubungan link -->
+            <div id="videoModal4" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
+                <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
+                    <div class="p-4 flex justify-between items-center border-b">
+                        <h3 class="font-bold">Video: Hubungan Momentum dan Impuls</h3>
+                        <button id="closeVideoBtn4" class="button">Tutup</button>
+                    </div>
+                    <div class="aspect-video">
+                        <iframe id="videoIframe4" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
             <!-- In-page video modal for Momentum link -->
             <div id="videoModal2" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
                 <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
@@ -253,6 +269,21 @@
                     openBtn3 && openBtn3.addEventListener('click', open3);
                     closeBtn3 && closeBtn3.addEventListener('click', close3);
                     modal3 && modal3.addEventListener('click', (e)=>{ if(e.target===modal3) close3(); });
+                })();
+            </script>
+
+            <script>
+                (function(){
+                    const openBtn4 = document.getElementById('openVideoBtn4');
+                    const modal4 = document.getElementById('videoModal4');
+                    const closeBtn4 = document.getElementById('closeVideoBtn4');
+                    const iframe4 = document.getElementById('videoIframe4');
+                    const embedSrc4 = 'https://www.youtube.com/embed/lbhF55PZHkA?si=uZfV7q0io-T7V2Vx&autoplay=1';
+                    function open4(){ iframe4.src = embedSrc4; modal4.classList.remove('hidden'); }
+                    function close4(){ modal4.classList.add('hidden'); iframe4.src = ''; }
+                    openBtn4 && openBtn4.addEventListener('click', open4);
+                    closeBtn4 && closeBtn4.addEventListener('click', close4);
+                    modal4 && modal4.addEventListener('click', (e)=>{ if(e.target===modal4) close4(); });
                 })();
             </script>
 
