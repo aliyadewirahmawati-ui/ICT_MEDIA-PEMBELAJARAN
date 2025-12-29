@@ -112,11 +112,44 @@
             0%, 100% { transform: translateY(0) rotate(-2deg); }
             50% { transform: translateY(-10px) rotate(2deg); }
         }
+
+        /* Shimmer/Kilau Animation for Game Title */
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-150%);
+            }
+            100% {
+                transform: translateX(150%);
+            }
+        }
+
         .game-title {
+            position: relative;
             font-family: 'Poppins', sans-serif;
             animation: titleBounce 3s infinite ease-in-out;
             -webkit-text-stroke: 2px black;
             text-shadow: 4px 4px 0px rgba(0,0,0,1);
+        }
+
+        .game-title::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            right: -20%;
+            bottom: -20%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.5) 20%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0.5) 80%,
+                transparent 100%
+            );
+            animation: shimmer 2.5s ease-in-out infinite;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            border-radius: 0.5rem;
         }
         
         /* Cloud Animation for Main Menu */
