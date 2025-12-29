@@ -86,6 +86,9 @@
                     <p class="text-gray-700">
                         Impuls menjelaskan mengapa benda bisa berubah kecepatannya ketika mendapat dorongan atau tumbukan.
                     </p>
+                    <div class="mt-4">
+                        <button id="openVideoBtn3" class="button warning">▶ Tonton penjelasan singkat (Impuls)</button>
+                    </div>
                 </div>
 
                 <!-- Hubungan Momentum dan Impuls -->
@@ -205,6 +208,19 @@
                 </div>
             </div>
 
+            <!-- In-page video modal for Impuls link -->
+            <div id="videoModal3" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
+                <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
+                    <div class="p-4 flex justify-between items-center border-b">
+                        <h3 class="font-bold">Video: Penjelasan Impuls</h3>
+                        <button id="closeVideoBtn3" class="button">Tutup</button>
+                    </div>
+                    <div class="aspect-video">
+                        <iframe id="videoIframe3" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-center mt-12 text-white">
                 <p class="text-lg font-bold">Physics Adventure © 2025</p>
                 <p class="text-sm opacity-80">Educational Game for Physics Learning</p>
@@ -222,6 +238,21 @@
                     openBtn && openBtn.addEventListener('click', open);
                     closeBtn && closeBtn.addEventListener('click', close);
                     modal && modal.addEventListener('click', (e)=>{ if(e.target===modal) close(); });
+                })();
+            </script>
+
+            <script>
+                (function(){
+                    const openBtn3 = document.getElementById('openVideoBtn3');
+                    const modal3 = document.getElementById('videoModal3');
+                    const closeBtn3 = document.getElementById('closeVideoBtn3');
+                    const iframe3 = document.getElementById('videoIframe3');
+                    const embedSrc3 = 'https://www.youtube.com/embed/AlHlZR8kbV8?si=l32Wm42qriYtLaLp&autoplay=1';
+                    function open3(){ iframe3.src = embedSrc3; modal3.classList.remove('hidden'); }
+                    function close3(){ modal3.classList.add('hidden'); iframe3.src = ''; }
+                    openBtn3 && openBtn3.addEventListener('click', open3);
+                    closeBtn3 && closeBtn3.addEventListener('click', close3);
+                    modal3 && modal3.addEventListener('click', (e)=>{ if(e.target===modal3) close3(); });
                 })();
             </script>
 
