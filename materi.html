@@ -146,6 +146,9 @@
                             <p class="text-sm">Momentum terjaga, energi kinetik berkurang banyak. Benda menempel atau bergerak bersama.</p>
                         </div>
                     </div>
+                    <div class="mt-4">
+                        <button id="openVideoBtn5" class="button warning">▶ Tonton penjelasan singkat (Jenis Tumbukan)</button>
+                    </div>
                 </div>
 
                 <!-- Aplikasi dalam Kehidupan -->
@@ -202,6 +205,19 @@
             </div>
 
             <!-- Footer -->
+            <!-- In-page video modal for Jenis Tumbukan link -->
+            <div id="videoModal5" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
+                <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
+                    <div class="p-4 flex justify-between items-center border-b">
+                        <h3 class="font-bold">Video: Jenis-jenis Tumbukan</h3>
+                        <button id="closeVideoBtn5" class="button">Tutup</button>
+                    </div>
+                    <div class="aspect-video">
+                        <iframe id="videoIframe5" width="100%" height="100%" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
             <!-- In-page video modal for Hubungan link -->
             <div id="videoModal4" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 hidden z-50">
                 <div class="bg-white rounded-lg overflow-hidden max-w-3xl w-full mx-4">
@@ -291,6 +307,20 @@
                 })();
             </script>
 
+            <script>
+                (function(){
+                    const openBtn5 = document.getElementById('openVideoBtn5');
+                    const modal5 = document.getElementById('videoModal5');
+                    const closeBtn5 = document.getElementById('closeVideoBtn5');
+                    const iframe5 = document.getElementById('videoIframe5');
+                    const embedSrc5 = 'https://www.youtube.com/embed/TA4qC3p36NU?si=cc98F1OM_PGkOpem&autoplay=1';
+                    function open5(){ iframe5.src = embedSrc5; modal5.classList.remove('hidden'); }
+                    function close5(){ modal5.classList.add('hidden'); iframe5.src = ''; }
+                    openBtn5 && openBtn5.addEventListener('click', open5);
+                    closeBtn5 && closeBtn5.addEventListener('click', close5);
+                    modal5 && modal5.addEventListener('click', (e)=>{ if(e.target===modal5) close5(); });
+                })();
+            </script>
             
         </div>
     </div>
